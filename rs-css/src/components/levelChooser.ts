@@ -1,8 +1,10 @@
 import Helper from './helper';
 import EventEmitter from 'eventemitter3';
-import { LevelIndex, OnLevelChangedCallback } from '../types';
+import { OnLevelChangedCallback } from '../types';
+import { LEVEL_INDEX } from '../const';
+import localStorageManager from './LocalStorageManager';
 
-class ChooseLevel {
+class LevelChooser {
     private helper;
     public emitter: EventEmitter;
     private onLevelChangedCallback: OnLevelChangedCallback;
@@ -24,7 +26,7 @@ class ChooseLevel {
         const resetProgressBtn = document.querySelector('.game-level__reset') as HTMLButtonElement;
 
         const changeLevel = (levelValue: number) => {
-            if (!isNaN(levelValue) && levelValue >= LevelIndex.FIRST && levelValue <= LevelIndex.LAST) {
+            if (!isNaN(levelValue) && levelValue >= LEVEL_INDEX.FIRST && levelValue <= LEVEL_INDEX.LAST) {
                 if (this.onLevelChangedCallback) {
                     this.onLevelChangedCallback(levelValue);
                     this.emitter.emit('levelChanged');
@@ -56,18 +58,17 @@ class ChooseLevel {
         });
 
         resetProgressBtn.addEventListener('click', () => {
-            changeLevel(LevelIndex.FIRST);
+            changeLevel(LEVEL_INDEX.FIRST);
         });
     }
 
     public getNextLevel(): number {
-        const currentLevel = Number(localStorage.getItem('level'));
-        if (!isNaN(currentLevel) && currentLevel >= LevelIndex.FIRST && currentLevel < LevelIndex.LAST) {
-            const nextLevel = currentLevel + LevelIndex.INCREMENT;
-            return nextLevel;
+        const currentLevel = localStorageManager.getLevel();
+        if (!isNaN(currentLevel) && currentLevel >= LEVEL_INDEX.FIRST && currentLevel < LEVEL_INDEX.LAST) {
+            return currentLevel + LEVEL_INDEX.INCREMENT;
         }
-        return LevelIndex.FIRST;
+        return LEVEL_INDEX.FIRST;
     }
 }
 
-export default ChooseLevel;
+export default LevelChooser;

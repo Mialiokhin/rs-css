@@ -1,17 +1,11 @@
 import { LevelsData } from '../types';
 
-class CreateGameLevel {
-    levelsData: LevelsData[];
-
-    constructor(levelsData: LevelsData[]) {
-        this.levelsData = levelsData;
-    }
-
-    public createLevelItems(): void {
+class LevelCreator {
+    static createLevels(levelsData: LevelsData[]): void {
         const gameLevelContainer = document.querySelector('.game-level');
         if (!gameLevelContainer) return;
 
-        this.levelsData.forEach((levelData) => {
+        levelsData.forEach((levelData: LevelsData) => {
             const { level } = levelData;
             const levelItem = document.createElement('div');
             levelItem.classList.add('game-level__item');
@@ -37,4 +31,4 @@ class CreateGameLevel {
     }
 }
 
-export default CreateGameLevel;
+export default LevelCreator;

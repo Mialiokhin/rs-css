@@ -11,7 +11,7 @@ import GameLevel from './Main/GameLevel/gameLevel';
 import Footer from './Footer/footer';
 import CodepenBackground from './СodepenBackground/codepenBackground';
 
-export default function view(): void {
+export default function createView(): void {
     if (BodyWrapper && Header) {
         BodyWrapper.appendChild(Header);
     }

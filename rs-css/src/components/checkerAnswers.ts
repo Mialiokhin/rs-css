@@ -1,5 +1,6 @@
 import LEVELS_DATA from './levelsData';
 import EventEmitter from 'eventemitter3';
+import LocalStorageManager from './LocalStorageManager';
 
 class CheckerAnswers {
     private answer: string;
@@ -19,7 +20,7 @@ class CheckerAnswers {
     }
 
     private codeInputEvent = (event: KeyboardEvent): void => {
-        const level = Number(localStorage.getItem('level'));
+        const level = LocalStorageManager.getLevel();
         const codeInput = document.querySelector('.css-input') as HTMLInputElement;
         if (event.key === 'Enter' && this.answer !== null && isNaN(Number(codeInput.value))) {
             this.answer = codeInput.value;
@@ -29,7 +30,7 @@ class CheckerAnswers {
 
     private codeBtnEvent = (): void => {
         const codeInput = document.querySelector('.css-input') as HTMLInputElement;
-        const level = Number(localStorage.getItem('level'));
+        const level = LocalStorageManager.getLevel();
         if (this.answer !== null && isNaN(Number(codeInput.value))) {
             this.answer = codeInput.value;
             this.checkAnswer(level);

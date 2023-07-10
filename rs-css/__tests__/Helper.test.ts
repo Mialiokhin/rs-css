@@ -1,7 +1,7 @@
 import Helper from '../src/components/helper';
 import { fireEvent } from '@testing-library/dom';
-import { autoTypingAnswerText, LevelIndex } from '../src/types';
 import LEVELS_DATA from '../src/components/levelsData';
+import { LEVEL_INDEX, AUTO_TYPING_ANSWER_TEXT } from '../src/const';
 
 describe('Helper', () => {
     let helper: Helper;
@@ -82,7 +82,7 @@ describe('Helper', () => {
         });
     });
 
-    describe('autoTypingAnswerText', () => {
+    describe('AUTO_TYPING_ANSWER_TEXT', () => {
         it('should type answer text into input', () => {
             const input = document.createElement('input');
             input.classList.add('css-input');
@@ -90,13 +90,13 @@ describe('Helper', () => {
 
             const level = 1;
             localStorage.setItem('level', String(level));
-            const selector = LEVELS_DATA[level - LevelIndex.INCREMENT].cssSelector[0];
+            const selector = LEVELS_DATA[level - LEVEL_INDEX.INCREMENT].cssSelector[0];
 
-            helper['autoTypingAnswerText']();
+            helper['AUTO_TYPING_ANSWER_TEXT']();
 
             setTimeout(() => {
                 expect(input.value).toBe(selector);
-            }, autoTypingAnswerText.TYPING_SPEED * selector.length);
+            }, AUTO_TYPING_ANSWER_TEXT.TYPING_SPEED * selector.length);
 
             document.body.removeChild(input);
         });

@@ -1,10 +1,11 @@
-import ChooseLevel from '../src/components/chooseLevel';
-import { OnLevelChangedCallback, LevelIndex } from '../src/types';
+import LevelChooser from '../src/components/levelChooser';
+import { OnLevelChangedCallback } from '../src/types';
+import { LEVEL_INDEX } from '../src/const';
 
-describe('ChooseLevel', () => {
-    let chooseLevel: ChooseLevel;
+describe('LevelChooser', () => {
+    let chooseLevel: LevelChooser;
     beforeEach(() => {
-        chooseLevel = new ChooseLevel();
+        chooseLevel = new LevelChooser();
     });
 
     afterEach(() => {
@@ -19,7 +20,7 @@ describe('ChooseLevel', () => {
         });
 
         it('should return the first level when the current level is the last level', () => {
-            localStorage.setItem('level', `${LevelIndex.LAST}`);
+            localStorage.setItem('level', `${LEVEL_INDEX.LAST}`);
             const nextLevel = chooseLevel.getNextLevel();
             expect(nextLevel).toBe(1);
         });

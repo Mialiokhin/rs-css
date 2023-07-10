@@ -3,7 +3,7 @@ import 'highlight.js/styles/devibeans.css';
 import LEVELS_DATA from './levelsData';
 import CheckerAnswers from './checkerAnswers';
 
-class DrawerLevel {
+class LevelDrawer {
     private checkerAnswers;
 
     constructor() {
@@ -45,4 +45,4 @@ class DrawerLevel {
     }
 }
 
-export default DrawerLevel;
+export default LevelDrawer;

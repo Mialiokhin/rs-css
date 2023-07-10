@@ -1,6 +1,8 @@
-import { autoTypingAnswerText, LevelIndex, OnLevelWonWithHelpCallback } from '../types';
+import { OnLevelWonWithHelpCallback } from '../types';
 import LEVELS_DATA from './levelsData';
 import EventEmitter from 'eventemitter3';
+import { LEVEL_INDEX, AUTO_TYPING_ANSWER_TEXT } from '../const';
+import localStorageManager from './LocalStorageManager';
 
 class Helper {
     readonly helperElement: HTMLElement;
@@ -51,8 +53,7 @@ class Helper {
             const wonLevels: number[] = [];
             const wonWithHelp: number[] = [];
             btnResetProgress.addEventListener('click', () => {
-                localStorage.setItem('wonLevels', `${wonLevels}`);
-                localStorage.setItem('wonWithHelp', `${wonWithHelp}`);
+                localStorageManager.resetProgress(wonLevels, wonWithHelp);
                 this.updateWonStyle();
             });
         }
@@ -60,8 +61,8 @@ class Helper {
 
     public updateWonStyle() {
         const levelNumbers = document.querySelectorAll('.game-level__item') as NodeListOf<HTMLElement>;
-        const wonLevels: number[] = JSON.parse(localStorage.getItem('wonLevels') || '[]');
-        const wonWithHelp: number[] = JSON.parse(localStorage.getItem('wonWithHelp') || '[]');
+        const wonLevels: number[] = localStorageManager.getWonLevels();
+        const wonWithHelp: number[] = localStorageManager.getWonWithHelp();
         if (levelNumbers !== null) {
             levelNumbers.forEach((el: HTMLElement) => {
                 if (wonLevels.indexOf(Number(el.dataset.level)) !== -1) {
@@ -120,8 +121,8 @@ class Helper {
     }
 
     public ifAllLevelsPassed(): void {
-        const wonLevels: number[] = JSON.parse(localStorage.getItem('wonLevels') || '[]');
-        if (wonLevels.length === LevelIndex.NUMBER_OF_LEVELS) {
+        const wonLevels: number[] = localStorageManager.getWonLevels();
+        if (wonLevels.length === LEVEL_INDEX.NUMBER_OF_LEVELS) {
             alert('Сongratulations!!! You passed all levels!');
         }
     }
@@ -138,26 +139,27 @@ class Helper {
         const helpButton = document.querySelector('.game-board__help') as HTMLButtonElement;
         const codeInput = document.querySelector('.css-input') as HTMLInputElement;
         helpButton.addEventListener('click', () => {
-            this.autoTypingAnswerText();
+            this.clearInput();
+            this.AUTO_TYPING_ANSWER_TEXT();
             this.emitter.emit('levelWonWithHelpCallbackSet');
             codeInput.focus();
         });
     }
 
-    private autoTypingAnswerText(): void {
-        const level = Number(localStorage.getItem('level'));
+    private AUTO_TYPING_ANSWER_TEXT(): void {
+        const level = localStorageManager.getLevel();
         const codeInput = document.querySelector('.css-input') as HTMLInputElement;
-        const selector = LEVELS_DATA[level - LevelIndex.INCREMENT].cssSelector[0];
-        let index = autoTypingAnswerText.START_INDEX;
+        const selector = LEVELS_DATA[level - LEVEL_INDEX.INCREMENT].cssSelector[0];
+        let index = AUTO_TYPING_ANSWER_TEXT.START_INDEX;
 
         const typingInterval = setInterval(() => {
             codeInput.value += selector[index];
-            index += autoTypingAnswerText.INCREMENT;
+            index += AUTO_TYPING_ANSWER_TEXT.INCREMENT;
 
             if (index === selector.length) {
                 clearInterval(typingInterval);
             }
-        }, autoTypingAnswerText.TYPING_SPEED);
+        }, AUTO_TYPING_ANSWER_TEXT.TYPING_SPEED);
     }
 }
 

@@ -1,23 +1,21 @@
 .html-viewer._shake {
-  animation: shake 0.1s infinite;
+    animation: shake 0.1s infinite;
 }
 
 .line-numbers_html {
-  background-color: #414141;
+    background-color: #414141;
 }
 
 .file-field_html {
-  background-color: #3a3a3a;
-  color: white;
+    background-color: #3a3a3a;
+    color: white;
 }
 
 .html-container {
-  color: white;
-  padding: 2vh 0 0 1rem;
+    color: white;
+    padding: 2vh 0 0 1rem;
 }
 
 .html-viewer {
-  background-color: #3a3a3a;
+    background-color: #3a3a3a;
 }
-
-/*# sourceMappingURL=html-viewer.css.map */

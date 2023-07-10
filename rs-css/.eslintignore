@@ -1,5 +1,5 @@
 dist/
 webpack.config.js
-html.d.ts
+global.d.ts
 Helper.test.ts
 ChooseLevel.test.ts
