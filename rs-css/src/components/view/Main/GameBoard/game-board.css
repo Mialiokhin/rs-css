@@ -1,0 +1,118 @@
+.game-board {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.game-board__task {
+  font-size: 4vh;
+  color: white;
+  text-align: center;
+}
+@media (1px <= width <= 800px) {
+  .game-board__task {
+    font-size: 3rem;
+  }
+}
+@media (1px <= width <= 650px) {
+  .game-board__task {
+    font-size: 2rem;
+  }
+}
+
+.game-board__wrapper {
+  text-align: center;
+  position: relative;
+  padding: 3rem 0 1rem;
+}
+
+.carpet__wrapper {
+  height: 20vh;
+  z-index: 9;
+  position: relative;
+  margin: 0 auto;
+  width: 78vw;
+}
+
+.carpet {
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  background-image: url("../../../../img/carpet.jpg");
+  background-size: 39%;
+}
+
+@keyframes up-down {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: 7%;
+  }
+}
+.up-down {
+  animation: up-down 1s infinite alternate;
+}
+
+.hide {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hide._visible {
+  opacity: 1;
+}
+
+.fly-off-screen {
+  animation: fly-off-screen 1.5s linear forwards;
+}
+
+@keyframes fly-off-screen {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  100% {
+    transform: translateY(-100vw) rotate(360deg);
+  }
+}
+.helper {
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.helper.visible {
+  opacity: 1;
+}
+
+.game-board__help {
+  font-size: 3rem;
+}
+@media (1px <= width <= 800px) {
+  .game-board__help {
+    font-size: 2rem;
+  }
+}
+@media (1px <= width <= 400px) {
+  .game-board__help {
+    font-size: 1rem;
+  }
+}
+
+/*# sourceMappingURL=game-board.css.map */

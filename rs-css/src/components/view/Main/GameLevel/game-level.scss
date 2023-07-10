@@ -1,0 +1,73 @@
+.game-level {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    color: white;
+    align-items: center;
+
+    h2 {
+        @media (1px <= width <= 700px) {
+            font-size: 1.5rem;
+        }
+
+        @media (1px <= width <= 500px) {
+            font-size: 1rem;
+        }
+    }
+}
+
+.game-level__item {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    font-size: 1.5vw;
+    justify-content: center;
+    padding-top: 1rem;
+    color: gray;
+
+    &:hover {
+        background-color: #555;
+    }
+}
+
+.game-level__item._active {
+    background-color: #555;
+}
+
+.bird {
+    padding-right: 2rem;
+    color: gray;
+}
+
+.bird::after {
+    content: '\2713';
+}
+
+.bird._help-passed {
+    color: orange;
+}
+
+.game-level__reset {
+    margin-top: 2rem;
+    font-size: 2vw;
+}
+
+.game-level__item._won {
+    .bird {
+        color: green;
+    }
+
+    .level {
+        color: green;
+    }
+}
+
+.game-level__item._won-with-help {
+    .bird {
+        color: orange;
+    }
+
+    .level {
+        color: orange;
+    }
+}

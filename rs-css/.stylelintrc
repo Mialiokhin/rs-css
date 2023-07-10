@@ -1,0 +1,10 @@
+{
+    "extends": ["stylelint-config-standard-scss", "prettier"],
+    "rules": {
+        "selector-class-pattern": null,
+        "no-descending-specificity": null,
+        "declaration-block-no-duplicate-properties": null,
+        "rule-empty-line-before": null
+    },
+    "ignoreFiles": ["**/bootstrap.min.css", "*.css", "**/selectors.css", "**/selectors.scss"]
+}

@@ -1,0 +1,82 @@
+cat,
+dog,
+sofa,
+socks,
+chair {
+    display: block;
+    z-index: 20;
+    position: relative;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+cat {
+    width: 15vh;
+    height: 90%;
+    background-image: url('../../../../img/cat.png');
+}
+
+dog {
+    width: 10vh;
+    height: 70%;
+    background-image: url('../../../../img/dog.png');
+}
+
+socks {
+    width: 7vh;
+    height: 90%;
+    background-image: url('../../../../img/socks.png');
+    bottom: -4vh;
+}
+
+socks._black-socks {
+    width: 12vh;
+    height: 60%;
+    background-image: url('../../../../img/black-socks.png');
+}
+
+socks._black-socks-center {
+    width: 12vh;
+    height: 60%;
+    background-image: url('../../../../img/black-socks.png');
+    bottom: 0;
+}
+
+sofa,
+chair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 30vh;
+    height: 70%;
+    background-image: url('../../../../img/sofa.png');
+    z-index: 20;
+    bottom: -2vh;
+
+    cat {
+        z-index: 30;
+        height: 130%;
+    }
+
+    socks {
+        bottom: 0;
+    }
+
+    socks._black-socks {
+        height: 100%;
+        width: 12vh;
+        background-image: url('../../../../img/black-socks.png');
+    }
+}
+
+sofa._black-sofa {
+    background-image: url('../../../../img/sofa-black.png');
+}
+
+chair {
+    width: 14vh;
+    height: 100%;
+    bottom: -1vh;
+    background-image: url('../../../../img/chair.png');
+}

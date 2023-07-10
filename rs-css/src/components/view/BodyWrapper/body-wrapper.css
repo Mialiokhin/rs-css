@@ -1,0 +1,21 @@
+.body__wrapper {
+  display: grid;
+  position: relative;
+  grid-template: "header-area" 5vh "main-area" 90vh "footer-area" 5vh/auto;
+  grid-gap: 0;
+}
+
+.header {
+  grid-area: header-area;
+}
+
+.main {
+  grid-area: main-area;
+}
+
+.footer {
+  grid-area: footer-area;
+  z-index: 10;
+}
+
+/*# sourceMappingURL=body-wrapper.css.map */

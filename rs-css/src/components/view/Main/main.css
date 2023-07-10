@@ -1,0 +1,23 @@
+.main {
+  display: grid;
+  grid-template: "game-board game-board game-level" 40vh "css-editor  html-viewer game-level" 50vh/40vw 40vw auto;
+  grid-gap: 0;
+}
+
+.game-board {
+  grid-area: game-board;
+}
+
+.css-editor {
+  grid-area: css-editor;
+}
+
+.html-viewer {
+  grid-area: html-viewer;
+}
+
+.game-level {
+  grid-area: game-level;
+}
+
+/*# sourceMappingURL=main.css.map */
